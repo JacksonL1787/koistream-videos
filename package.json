@@ -1,0 +1,33 @@
+{
+  "name": "failover",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "watch": "gulp static && gulp watch"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "del": "^5.1.0",
+    "express": "~4.16.1",
+    "gulp": "^4.0.2",
+    "gulp-cached": "^1.1.1",
+    "gulp-using": "^0.1.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-oauth2": "^1.5.0",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-preset-minify": "^0.3.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-nodemon": "^2.4.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-stylus": "^2.7.0"
+  }
+}
