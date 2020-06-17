@@ -1,0 +1,92 @@
+head
+	include ../main
+	meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0")
+	link(rel="stylesheet" href="/css/admin/home.css")
+
+	script.
+
+		var rawUser = "#{user}"
+		if(rawUser) {
+			window.user = JSON.parse(rawUser.replace(/&quot;/g,'"'));
+		}
+
+body
+	
+	.adminHome-wrapper
+		.adminHome-nav
+			.adminHome-nav-wrapper.fullVertCenter
+				p The KoiStream
+			.adminHome-nav-container.fullVertCenter
+				.adminHome-nav-container-search
+					input.fullVertCenter(type="text")
+				.adminHome-nav-container-notifications
+					.adminHome-nav-container-notifications-mbs.fullVertCenter.reg-image
+						.adminHome-nav-container-notifications-mbs-notif
+				.adminHome-nav-container-user
+					.adminHome-nav-container-user-avatar-container
+						.adminHome-nav-container-user-avatar.fullCenter.reg-image
+					.adminHome-nav-container-user-FNLN
+						p Pending
+
+		.adminHome-sNav
+			.adminHome-sNav-container.fullXCenter
+				.adminHome-sNav-objects
+					.adminHome-sNav-object#overview.active
+						p.fullVertCenter Overview
+						.adminHome-sNav-object-bhov
+					.adminHome-sNav-object#overview
+						p.fullVertCenter Library
+						.adminHome-sNav-object-bhov
+					.adminHome-sNav-object#overview
+						p.fullVertCenter Statistics
+						.adminHome-sNav-object-bhov
+					.adminHome-sNav-object#overview
+						p.fullVertCenter Users
+						.adminHome-sNav-object-bhov
+				.adminHome-sNav-uploadVideo
+					input.fullVertCenter(type="button" value="Upload A Video" onclick="window.location.href='/admin/u/newvideo'")
+
+		.adminHome-body
+			.adminHome-body-container.fullXCenter
+				.adminHome-body-header
+					h3.fullVertCenter Hello, Pending!
+				.adminHome-body-obs1
+					.adminHome-body-obs1-left
+						.adminHome-body-obs1-left-s
+							.adminHome-body-obs1-left-s-container.fullCenter
+								.adminHome-body-obs1-left-s-container-tl#fillTLS1
+								h3 %
+								.adminHome-body-obs1-left-s-c-bottom
+									p Videos
+									.adminHome-body-obs1-left-s-c-bottom-selMarker
+										.adminHome-body-obs1-left-s-c-bottom-selMarker-fill#fillS1
+
+							.adminHome-body-obs1-left-s-vl.fullVertCenter
+						.adminHome-body-obs1-left-s
+							.adminHome-body-obs1-left-s-container.fullCenter
+								.adminHome-body-obs1-left-s-container-tl#fillTLS2
+								h3 %
+								.adminHome-body-obs1-left-s-c-bottom
+									p Total Views
+									.adminHome-body-obs1-left-s-c-bottom-selMarker
+										.adminHome-body-obs1-left-s-c-bottom-selMarker-fill#fillS2
+							.adminHome-body-obs1-left-s-vl.fullVertCenter
+						.adminHome-body-obs1-left-s
+							.adminHome-body-obs1-left-s-container.fullCenter
+								.adminHome-body-obs1-left-s-container-tl#fillTLS3
+								h3 %
+								.adminHome-body-obs1-left-s-c-bottom
+									p Pending Uploads
+									.adminHome-body-obs1-left-s-c-bottom-selMarker
+										.adminHome-body-obs1-left-s-c-bottom-selMarker-fill#fillS3
+
+					.adminHome-body-obs1-right
+				.adminHome-body-obs2
+					.adminHome-body-obs2-s1
+						h3.fullVertCenter All Videos
+					.adminHome-body-obs2-s2
+					
+				
+
+
+	script(src="/js/admin/home.js")

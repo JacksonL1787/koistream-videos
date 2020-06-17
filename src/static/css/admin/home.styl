@@ -1,0 +1,292 @@
+
+.adminHome-wrapper
+	width 100%
+	height 100vh
+	position relative
+
+.adminHome-nav
+	width 100%
+	height 100px
+	background #2860ff
+	z-index 10
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.38);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.38);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.38);
+
+.adminHome-sNav
+	width 100%
+	height 100px
+	background white
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+	z-index 9
+
+.adminHome-body
+	width 100%
+	height calc(100% - 200px)
+	background #f5f7fb
+
+.adminHome-nav-wrapper
+	width fit-content
+	height fit-content
+	left 3%
+	p
+		color: white;
+		font-size: 26px;
+		font-weight: 300;
+		letter-spacing: -1px;
+
+.adminHome-nav-container
+	width fit-content
+	height fit-content
+	right 3%
+	display -webkit-box
+
+.adminHome-nav-container-user
+	width fit-content
+	height fit-content
+	display -webkit-box
+
+.adminHome-nav-container-user-avatar-container
+	width 42px
+	height 42px
+	background-color white
+	border-radius 50%
+	margin-right 25px
+
+.adminHome-nav-container-user-avatar
+	width 38px
+	height 38px
+	border-radius 50%
+
+.adminHome-nav-container-user-FNLN
+	p
+		margin-top 9.5px
+		font-weight 500
+		font-size 17px
+		color white
+
+.adminHome-nav-container-notifications
+	margin-right 80px
+	margin-left 80px
+
+.adminHome-nav-container-notifications-mbs
+	width 40px
+	height 40px
+	background-image url("/img/icons/mail.svg")
+	cursor pointer
+	position relative !important
+
+.adminHome-nav-container-search input
+	position relative !important
+	background: #4a79ff;
+	border: none;
+	outline: none;
+	width: 300px;
+	height: 42px;
+	border-radius: 25px;
+	color: white;
+	padding-left: 30px;
+
+.adminHome-nav-container-notifications-mbs-notif
+	width: 13px;
+	height: 13px;
+	background: #f9b00e;
+	top: 3.5px;
+	right: -29.5px;
+	border-radius: 50%;
+
+.adminHome-sNav-container
+	width 75%
+	height 100%
+	display flex
+	justify-content space-between
+
+.adminHome-sNav-objects
+	width fit-content
+	height 100%
+	display -webkit-box
+
+.adminHome-sNav-object
+	width fit-content
+	height 100%
+	cursor pointer
+	transition .3s
+	margin-right 40px
+	&:hover
+		p
+			color black
+	&.active
+		p
+			color black 
+
+		.adminHome-sNav-object-bhov
+			height 4px
+
+		margin-right 50px
+		&:nth-child(:not-first)
+			margin-left 50px
+
+	&:nth-child(:not-first)
+		margin-left 40px
+	p
+		position relative !important
+		margin-left 10px
+		margin-right 10px
+		transition .3s
+		color: #b0afb5;
+
+.adminHome-sNav-object-bhov
+	width 100%
+	transition .3s
+	height 0px
+	background #fab92a
+	bottom -1px
+	position absolute
+
+.adminHome-sNav-uploadVideo
+	width fit-content
+	height 100%
+	input
+		position relative !important
+		width: 180px;
+		height: 41px;
+		background: none;
+		border: 2px solid #2860ff;
+		border-radius: 10px;
+		color: #2860ff;
+		font-weight: 400;
+		outline none
+		letter-spacing: 0.5px;
+		cursor: pointer;
+		transition .4s
+		&:hover
+			background #2860ff
+			color white
+
+.adminHome-body-container
+	width 70%
+	height 100%
+
+.adminHome-body-header
+	width 100%
+	height 150px
+	h3
+		font-size: 25px;
+
+.adminHome-body-obs1
+	width: 100%;
+	height: 350px;
+	display flex 
+	justify-content space-between
+
+.adminHome-body-obs1-left
+	width 70%
+	height 100%
+	background white
+	border-radius 5px
+	display flex
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+
+.adminHome-body-obs1-right
+	width 27%
+	height 100%
+	background white
+	border-radius 5px
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+
+.adminHome-body-obs2
+	width 100%
+	height calc(95% - 500px)
+
+.adminHome-body-obs2-s1
+	width 100%
+	height 100px
+	h3
+		font-weight 100
+
+.adminHome-body-obs2-s2
+	width 100%
+	height calc(100% - 100px)
+	background white
+	border-radius 5px
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+
+.adminHome-body-obs1-left-s
+	width calc(100% / 3) 
+	height 100%
+
+.adminHome-body-obs1-left-s-vl
+	width 2px
+	height 80%
+	background #f5f5f5
+	right 0px
+
+.adminHome-body-obs1-left-s-container
+	width 70%
+	height 70%
+	h3
+		font-size: 120px;
+	&:hover
+		.adminHome-body-obs1-left-s-container-tl
+			height 6px
+
+	.adminHome-body-obs1-left-s-c-bottom
+		bottom 0px
+		position absolute
+		width 100%
+		height fit-content
+		p
+			margin-bottom 13px
+			color #c9c9c9
+			font-weight 600
+			font-size 18px
+			left -2px
+			position relative
+
+		.adminHome-body-obs1-left-s-c-bottom-selMarker
+			width 100%
+			height 6px
+			background #ebeaf1
+
+		.adminHome-body-obs1-left-s-c-bottom-selMarker-fill
+			height 100%
+			&#fillS1
+				width 30%
+				background #14b195
+				-webkit-box-shadow: 0px 0px 8px 0px rgba(20,177,149,.5);
+				-moz-box-shadow: 0px 0px 8px 0px rgba(20,177,149,.5);
+				box-shadow: 0px 0px 8px 0px rgba(20,177,149,.5);
+			&#fillS2
+				width 60%
+				background #fab92a
+				-webkit-box-shadow: 0px 0px 8px 0px rgba(250,185,42,0.5);
+				-moz-box-shadow: 0px 0px 8px 0px rgba(250,185,42,0.5);
+				box-shadow: 0px 0px 8px 0px rgba(250,185,42,0.5);
+			&#fillS3
+				width 10%
+				background #1850f1
+				-webkit-box-shadow: 0px 0px 8px 0px rgba(24,80,241,0.5);
+				-moz-box-shadow: 0px 0px 8px 0px rgba(24,80,241,0.5);
+				box-shadow: 0px 0px 8px 0px rgba(24,80,241,0.5);
+	
+	.adminHome-body-obs1-left-s-container-tl
+		width: 143%;
+		height: 0px;
+		position: absolute;
+		top: calc(-22% + 1px)
+		left: -21%;
+		transition .2s
+		&#fillTLS1
+			background: #14b195;
+		&#fillTLS2
+			background: #fab92a;
+		&#fillTLS3
+			background: #1850f1;

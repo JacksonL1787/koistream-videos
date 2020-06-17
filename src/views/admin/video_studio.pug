@@ -1,0 +1,13 @@
+head
+	include ../main
+	meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0")
+	link(rel="stylesheet" href="/css/admin/video_studio.css")
+
+	script.
+
+		var rawUser = "#{user}"
+		if(rawUser) {
+			window.user = JSON.parse(rawUser.replace(/&quot;/g,'"'));
+		}
+
+body

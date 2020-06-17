@@ -16,14 +16,11 @@ head
 
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
-script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js")
 script.
 
 	let vh = window.innerHeight * 0.01;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-	var socket = io();
 
 	function underdev() {
 		window.alert('This page is currently being developed by our team, please mind that it is not complete.')
@@ -37,14 +34,6 @@ script.
 		if (typeof s !== 'string') return ''
 		return s.charAt(0).toUpperCase() + s.slice(1)
 	}
-
-	socket.on('reloadSiteClients', function(data) {
-		location.reload();
-	})
-	
-	socket.on('newLogin', () => {
-		window.location.href="/new-login"
-	})
 
 	function makeid(length) {
 		var result           = '';

@@ -28,12 +28,7 @@ gulp.task('img', () => {
         .pipe(gulp.dest('./bin/img'))
 })
 
-gulp.task('videos', () => {
-    return gulp.src('./src/static/videos/**/*')
-        .pipe(gulp.dest('./bin/videos'))
-})
-
-exports.static = gulp.series([ 'stylus', 'babel', 'img', 'videos']);
+exports.static = gulp.series([ 'stylus', 'babel', 'img']);
 
 gulp.task('watch', (done) => {
     gulp.watch(['./src/static/**/*.*'], gulp.series(['static']));
