@@ -3,19 +3,25 @@ body
 
 #main
     width 95%
+    max-width 2000px
     margin 40px auto 0
     .page-title
         font-weight 800
         letter-spacing .3px
         font-size 25px
         color white
+        margin-left 20px
     .videos-container
         width 100%
-        margin-top 40px
+        margin 20px 0 40px
+        display flex
+        justify-content left
+        flex-flow row wrap
         .video
-            width 300px
+            width calc(25% - 40px)
             cursor pointer
             display block
+            margin 20px
             &:hover
                 .thumbnail-overlay
                     opacity 1 !important
@@ -44,7 +50,7 @@ body
                         background-repeat no-repeat
                         background-position center
                 .thumbnail
-                    width 300px
+                    width 100%
             h1.title
                 margin-top 10px
                 font-size 1.2rem
@@ -52,15 +58,30 @@ body
                 font-weight 500
                 color white
                 display inline-block
-                width 300px
+                width 100%
             p.date
                 color #949494
                 font-size .8rem
                 letter-spacing .3px
                 font-weight 400
                 display inline-block
-                width 300px
+                width 100%
                 margin-top 2px
                 b
                     margin 0 10px
                     color #bfbfbf
+
+@media only screen and (max-width: 1500px)
+    .videos-container
+        .video
+            width calc(33% - 40px) !important
+
+@media only screen and (max-width: 1000px)
+    .videos-container
+        .video
+            width calc(50% - 40px) !important
+
+@media only screen and (max-width: 700px)
+    .videos-container
+        .video
+            width calc(100% - 40px) !important

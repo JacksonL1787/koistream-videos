@@ -11,23 +11,16 @@ head
 		}
 body
 	include nav
+	h1.no-video No Video Found
 	#main
 		h1.disclaimer Previous Stream
 		.video-player
-			<video id="video" class="video-js" preload="auto" width="1024" height="576" poster="/videos/vlkajsdf/thumbnail.png" data-setup='{"controls": true}'>
-				source(src="/videos/vlkajsdf/video.mp4" type="video/mp4")
-			</video>
 			img(src="/img/ratio-placeholder.png")
 		.video-information
 			.container-content
 				.title-views-wrap
-					h1.title Intersession Celebration
-					p.views 253 Views
+					h1.title
+					p.views
 				.description-wrap
-					<p class="description">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mattis ipsum et lectus porta, et tincidunt enim iaculis. Duis vel pellentesque justo. Aenean gravida orci tortor, eu cursus nibh vulputate eget. Maecenas gravida malesuada lacus nec mollis. Phasellus mollis id felis at euismod. Nunc suscipit aliquet erat, egestas fermentum nulla luctus ut. Mauris in nibh scelerisque, tristique ipsum a, porttitor metus. Nam tempus pulvinar justo, non pellentesque enim placerat a.
-						<br>
-						<br>
-						Donec ultrices nisi sed metus fringilla, nec eleifend sem bibendum. Suspendisse nunc quam, maximus vitae placerat at, condimentum quis sem. Donec sed libero nibh. Suspendisse in bibendum ex, vel tempus dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla dignissim orci non elementum varius. Integer elementum, nisl eu rhoncus posuere, lectus mi vestibulum purus, ornare sodales neque purus ut dolor.
-					</p>
+					p.description
 	script(src="/js/user/video.js")

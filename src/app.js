@@ -12,6 +12,8 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const colors = require("colors")
 const randomstring = require('randomstring')
+const fs = require('fs');
+const moment = require("moment")
 
 var multer = require('multer');
 
@@ -39,28 +41,44 @@ mongoose.connect(`mongodb://localhost:27017/DesignTechHS`, {useNewUrlParser: tru
   app.set('db', client)
 });
 
+var videoUploadFolder;
 
-// var storage_errorCap = multer.diskStorage({
-//   destination: 'src/static/img/uploads/errors/index',
-//   filename: function(req, file, cb) {
-//     cb(null, "error_capture" + '-' + Date.now() + '-' + randomstring.generate() + '.jpg');
-//   }
-// })
+var storage_video = multer.diskStorage({
+	destination: (req, file, cb) => { 
+    if(file.mimetype.toLowerCase().replace(/\s/g, '').indexOf("video") !== -1) {
+      videoUploadFolder = randomstring.generate({length: 6, charset: 'alphabetic'})
+      fs.mkdirSync("bin/videos/" + videoUploadFolder);
+      cb(null, 'bin/videos/' + videoUploadFolder)
+    } else if(file.mimetype.toLowerCase().replace(/\s/g, '').indexOf("image") !== -1) {
+      cb(null, 'bin/videos/' + videoUploadFolder)
+    }
+	},
+	filename: function(req, file, cb) {
+    if(file.mimetype.toLowerCase().replace(/\s/g, '').indexOf("video") !== -1) {
+      cb(null, "video" + path.extname(file.originalname));
+    } else if(file.mimetype.toLowerCase().replace(/\s/g, '').indexOf("image") !== -1) {
+      cb(null, "thumbnail.png");
+    }
+	}
+})
 
-// var upload_errorCap = multer({ storage: storage_errorCap })
+var upload_video = multer({ storage: storage_video })
  
-// app.post('/tst/uploadfile', upload_errorCap.single('blob'), (req, res, next) => {
-//   const file = req.file
-//   if (!file) {
-//     res.sendStatus(393)
-//   } else {
-//     mongoose.connect(`mongodb://localhost:27017/DesignTechHS`, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
-//       client.collection('errors').updateOne({"errorID": req.body.id}, {$push : {"errorCaptures" : {"errorCapture": req.file.filename, "timestamp": req.body.timestamp}}})
-//     })
-//     res.sendStatus(200)
-//   }
-// })
-
+app.post('/admin/u/video', upload_video.array('videoUPL'), (req, res, next) => {
+  const files = req.files
+  console.log(files)
+  if (!files[0]) { 
+    console.log("[File Upload]  Uploaded content failed to upload")
+    res.sendStatus(393)
+  } else {
+    mongoose.connect(`mongodb://localhost:27017/DesignTechHS`, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
+      client.collection('videos').insertOne({"id": files[0].destination.slice(11), "title": req.body.title, "streamDate": Number(req.body.streamDateS), "uploadDate": Date.now(), "description": req.body.description, "views": 0, "uploadMeta": {"uploadUserGID": req.body.googleId}})
+    })
+    console.log("[File Upload]  Uploaded content completed")
+    res.json({"status": 200, "folder": videoUploadFolder, "meta_file": files})
+    videoUploadFolder = "";
+  }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -72,6 +90,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'bin')));
 app.use(express.static(path.join(__dirname, '..', 'libs')));
+app.use(bodyParser.json({limit:'50G'})); 
+app.use(bodyParser.urlencoded({extended:true, limit:'50G'}));
 
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,

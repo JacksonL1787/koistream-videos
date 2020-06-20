@@ -3,10 +3,18 @@ const appendVideos = () => {
         return;
     }
     videos.forEach((v) => {
-        let postTime = moment(v.uploadDate).fromNow()
+        let postTime = moment(v.streamDate).fromNow()
         postTime = _.upperFirst(postTime)
-        console.log(postTime)
-        $(".videos-container").append(``)
+        $(".videos-container").prepend(`
+            <a class="video" href="/v/${v.id}">
+                <div class="video-thumbnail-wrap">
+                    <div class="thumbnail-overlay">
+                        <div class="play-icon"></div>
+                    </div><img class="thumbnail" src="videos/${v.id}/thumbnail.png" /></div>
+                <h1 class="title">${v.title}</h1><br/>
+                <p class="date">${postTime}<b>•</b> ${v.views} Views</p>
+            </a>
+        `)
     })
     
 }

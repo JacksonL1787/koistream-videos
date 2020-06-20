@@ -2,7 +2,7 @@ head
 	include ../main
 	meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0")
 	link(rel="stylesheet" href="/css/admin/video_studio.css")
-
+	<link rel="stylesheet" type="text/css" href="https://www.jqueryscript.net/demo/Clean-jQuery-Date-Time-Picker-Plugin-datetimepicker/jquery.datetimepicker.css"/>
 	script.
 
 		var rawUser = "#{user}"
@@ -11,3 +11,77 @@ head
 		}
 
 body
+
+	.videoStudio-wrapper
+		.videoStudio-wrapper-modal.fullCenter
+			.videoStudio-wrapper-modal-header
+				.videoStudio-wrapper-modal-header-txt.fullVertCenter
+					h3 Video Studio
+					p Upload a video
+			.videoStudio-wrapper-modal-body
+				form(action="/admin/u/video" method="post" enctype="multipart/form-data")
+					input(type="file" name="videoUPL")
+					br
+					input(type="file" name="videoUPL")
+					br
+					input(type="text" placeholder="Title" name="title")
+					br
+					textarea(type="text" placeholder="Description" name="description")
+					br
+					input(type="text" id="dtpicker" name="streamDate" placeholder="Stream Date")
+					br
+					input.upVid(type="submit" value="Upload")
+				.videoStudio-wrapper-modal-body-progressBar
+					.videoStudio-wrapper-modal-body-progressBar-fill
+
+script(src="https://www.jqueryscript.net/demo/Clean-jQuery-Date-Time-Picker-Plugin-datetimepicker/jquery.datetimepicker.js")
+script.
+
+	$('.upVid').click(function(e){
+		e.preventDefault()
+		uploadVideo();
+	})
+	$('#dtpicker').datetimepicker({
+		maxDateTime: true
+	});
+
+
+	function uploadVideo() {
+		var form = $('.videoStudio-wrapper-modal-body form')[0];
+		var data = new FormData(form);
+		data.append("directory", makeid(6))
+		data.append("googleId", user.googleId);
+		data.append("streamDateS", moment($('#dtpicker').val()).valueOf());
+		$.ajax({
+			xhr: function() {
+				var xhr = new window.XMLHttpRequest();
+				xhr.upload.addEventListener("progress", function(evt) {
+					if (evt.lengthComputable) {
+						var percentComplete = evt.loaded / evt.total;
+						percentComplete = parseInt(percentComplete * 100);
+						console.log(percentComplete);
+						$('.videoStudio-wrapper-modal-body-progressBar-fill').width(percentComplete + "%")
+						if (percentComplete === 100) {
+							log("Upload Complete")
+						}
+					}
+				}, false);
+				return xhr;
+			},
+			type: "POST",
+			enctype: 'multipart/form-data',
+			url: "/admin/u/video",
+			data: data,
+			processData: false,
+			contentType: false,
+			cache: false,
+			success: (data) => {
+				console.log(data)
+				$('.videoStudio-wrapper-modal-body-progressBar-fill').css("background-color", "limegreen")
+		
+			},
+			error: (e) => {
+				$('.videoStudio-wrapper-modal-body-progressBar-fill').css("background-color", "red")
+			}
+		});
+	}

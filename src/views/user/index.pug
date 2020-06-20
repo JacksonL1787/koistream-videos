@@ -1,19 +1,15 @@
 head
 		include ../main
 		link(rel="stylesheet" href="css/user/index.css")
-		
+		script.
+			const rawVideos = "#{videos}"
+			if(rawVideos) {
+				window.videos = JSON.parse(rawVideos.replace(/&quot;/g,'"'))
+			}
 
 body
 	include nav
 	#main
 		h1.page-title Previous Streams
 		.videos-container
-			a.video(href="/v/vlkajsdf")
-				.video-thumbnail-wrap
-					.thumbnail-overlay
-						.play-icon
-					img.thumbnail(src="videos/vlkajsdf/thumbnail.png")
-				h1.title Intersession Celebration
-				br
-				p.date 1 week ago <b>•</b> 253 Views
 	script(src="js/user/index.js")
