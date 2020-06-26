@@ -1,0 +1,176 @@
+
+.adminHome-wrapper
+	width 100%
+	height 100vh
+	position relative
+
+.adminHome-nav
+	width 100%
+	height 100px
+	background #2860ff
+	z-index 10
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.38);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.38);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.38);
+
+.adminHome-sNav
+	width 100%
+	height 100px
+	background white
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+	z-index 9
+
+.adminHome-body
+	width 100%
+	height calc(100% - 200px)
+	background #f5f7fb
+
+.adminHome-nav-wrapper
+	width fit-content
+	height fit-content
+	left 3%
+	p
+		color: white;
+		font-size: 26px;
+		font-weight: 300;
+		letter-spacing: -1px;
+
+.adminHome-nav-container
+	width fit-content
+	height fit-content
+	right 3%
+	display -webkit-box
+
+.adminHome-nav-container-user
+	width fit-content
+	height fit-content
+	display -webkit-box
+
+.adminHome-nav-container-user-avatar-container
+	width 42px
+	height 42px
+	background-color white
+	border-radius 50%
+	margin-right 25px
+
+.adminHome-nav-container-user-avatar
+	width 38px
+	height 38px
+	border-radius 50%
+
+.adminHome-nav-container-user-FNLN
+	p
+		margin-top 9.5px
+		font-weight 500
+		font-size 17px
+		color white
+
+.adminHome-nav-container-notifications
+	margin-right 80px
+	margin-left 80px
+
+.adminHome-nav-container-notifications-mbs
+	width 40px
+	height 40px
+	background-image url("/img/icons/mail.svg")
+	cursor pointer
+	position relative !important
+
+.adminHome-nav-container-search input
+	position relative !important
+	background: #4a79ff;
+	border: none;
+	outline: none;
+	width: 300px;
+	height: 42px;
+	border-radius: 25px;
+	color: white;
+	padding-left: 30px;
+
+.adminHome-nav-container-notifications-mbs-notif
+	width: 13px;
+	height: 13px;
+	background: #f9b00e;
+	top: 3.5px;
+	right: -29.5px;
+	border-radius: 50%;
+
+.adminHome-sNav-container
+	width 85%
+	height 100%
+	display flex
+	justify-content space-between
+
+.adminHome-sNav-objects
+	width fit-content
+	height 100%
+	display -webkit-box
+
+.adminHome-sNav-object
+	width fit-content
+	height 100%
+	cursor pointer
+	transition .3s
+	margin-right 40px
+	&:hover
+		p
+			color black
+	&.active
+		p
+			color black 
+
+		.adminHome-sNav-object-bhov
+			height 4px
+
+		margin-right 50px
+		&:nth-child(:not-first)
+			margin-left 50px
+
+	&:nth-child(:not-first)
+		margin-left 40px
+	p
+		position relative !important
+		margin-left 10px
+		margin-right 10px
+		transition .3s
+		color: #b0afb5;
+
+.adminHome-sNav-object-bhov
+	width 100%
+	transition .3s
+	height 0px
+	background #fab92a
+	bottom -1px
+	position absolute
+
+.adminHome-sNav-uploadVideo
+	width fit-content
+	height 100%
+	input
+		position relative !important
+		width: 180px;
+		height: 41px;
+		background: none;
+		border: 2px solid #2860ff;
+		border-radius: 10px;
+		color: #2860ff;
+		font-weight: 400;
+		outline none
+		letter-spacing: 0.5px;
+		cursor: pointer;
+		transition .4s
+		&:hover
+			background #2860ff
+			color white
+
+.adminHome-body-container
+	width 80%
+	height 100%
+
+.adminHome-body-header
+	width 100%
+	height 120px
+	h3
+		font-size: 25px;

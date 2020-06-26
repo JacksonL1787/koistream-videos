@@ -1,0 +1,56 @@
+head
+	include ../main
+	meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0")
+	link(rel="stylesheet" href="/css/admin/users.css")
+
+	script.
+
+		var rawUser = "#{user}"
+		if(rawUser) {
+			window.user = JSON.parse(rawUser.replace(/&quot;/g,'"'));
+		}
+
+		var rawVideos = "#{videosRaw}"
+		if(rawUser) {
+			window.videos = JSON.parse(rawVideos.replace(/&quot;/g,'"'));
+		}
+
+body
+
+	.adminHome-wrapper
+		.adminHome-nav
+			.adminHome-nav-wrapper.fullVertCenter
+				p The KoiStream
+			.adminHome-nav-container.fullVertCenter
+				.adminHome-nav-container-search
+					input.fullVertCenter(type="text")
+				.adminHome-nav-container-notifications
+					.adminHome-nav-container-notifications-mbs.fullVertCenter.reg-image
+						.adminHome-nav-container-notifications-mbs-notif
+				.adminHome-nav-container-user
+					.adminHome-nav-container-user-avatar-container
+						.adminHome-nav-container-user-avatar.fullCenter.reg-image
+					.adminHome-nav-container-user-FNLN
+						p Pending
+
+		.adminHome-sNav
+			.adminHome-sNav-container.fullXCenter
+				.adminHome-sNav-objects
+					.adminHome-sNav-object#overview(onclick="window.location.href='/admin/home'")
+						p.fullVertCenter Overview
+						.adminHome-sNav-object-bhov
+					.adminHome-sNav-object#library(onclick="window.location.href='/admin/library'")
+						p.fullVertCenter Library
+						.adminHome-sNav-object-bhov
+					.adminHome-sNav-object#users.active(onclick="window.location.href='/admin/users'")
+						p.fullVertCenter Users
+						.adminHome-sNav-object-bhov
+				.adminHome-sNav-uploadVideo
+					input.fullVertCenter(type="button" value="Upload A Video" onclick="window.location.href='/admin/u/newvideo'")
+
+		.adminHome-body
+			.adminHome-body-container.fullXCenter
+				.adminHome-body-header
+					h3.fullVertCenter Hello, Pending!
+
+script(src="/js/admin/users.js")

@@ -98,7 +98,7 @@
 	border-radius: 50%;
 
 .adminHome-sNav-container
-	width 75%
+	width 85%
 	height 100%
 	display flex
 	justify-content space-between
@@ -166,23 +166,23 @@
 			color white
 
 .adminHome-body-container
-	width 70%
+	width 80%
 	height 100%
 
 .adminHome-body-header
 	width 100%
-	height 150px
+	height 120px
 	h3
 		font-size: 25px;
 
 .adminHome-body-obs1
 	width: 100%;
-	height: 350px;
+	height: 300px;
 	display flex 
 	justify-content space-between
 
 .adminHome-body-obs1-left
-	width 70%
+	width 65%
 	height 100%
 	background white
 	border-radius 5px
@@ -192,7 +192,7 @@
 	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
 
 .adminHome-body-obs1-right
-	width 27%
+	width 32%
 	height 100%
 	background white
 	border-radius 5px
@@ -202,7 +202,7 @@
 
 .adminHome-body-obs2
 	width 100%
-	height calc(95% - 500px)
+	height calc(95% - 420px)
 
 .adminHome-body-obs2-s1
 	width 100%
@@ -233,7 +233,7 @@
 	width 70%
 	height 70%
 	h3
-		font-size: 120px;
+		font-size: 100px;
 	&:hover
 		.adminHome-body-obs1-left-s-container-tl
 			height 6px
@@ -290,3 +290,100 @@
 			background: #fab92a;
 		&#fillTLS3
 			background: #1850f1;
+
+#reloadTotalViews
+	cursor pointer !important
+
+// Obs1 Right
+
+.adminHome-body-obs1-right-top
+	width 100%
+	height calc(100% - 82px)
+	.adminHome-body-obs1-right-top-container
+		width calc(100% - 80px)
+		height calc(100% - 80px)	
+		display -webkit-box
+		.adminHome-body-obs1-right-top-container-left
+			width 50%
+			height 100%
+			.adminHome-body-obs1-right-top-container-left-txtData-wrapper
+				width fit-content
+				height fit-content
+				left 40%
+				h3
+					font-size: 64px;
+					font-weight 800
+				p
+					font-size: 14px;
+					font-weight: 400;
+					color: #929292;
+					line-height: 1;
+
+		.adminHome-body-obs1-right-top-container-right
+			width 50%
+			height 100%
+
+.adminHome-body-obs1-right-bottom
+	width 100%
+	height 82px
+	transition .3s
+	background transparent
+	border-radius 0px 0px 5px 5px
+	cursor pointer !important
+	&:hover
+		.adminHome-body-obs1-right-bottom-thr
+			background #3768fb
+		background #3768fb
+		p
+			color white
+	.adminHome-body-obs1-right-bottom-thr
+		width 100%
+		height 1px
+		background gray
+		opacity .1
+		transition .3s
+		top 0px
+		position absolute
+	p
+		color #3768fb
+		font-weight 600
+		transition .3s
+
+// obs2 s2
+
+.adminHome-body-obs2-s2-flexContianer
+	width 90%
+	height 100%
+	display flex
+	justify-content space-between
+	flex-wrap wrap
+	overflow-y auto
+
+.adminHome-body-obs2-s2-flexContianer-object
+	width: 380px;
+	height: 240px;
+	background-color white
+	background-position center 
+	background-repeat no-repeat
+	background-size cover
+	border-radius: 25px;
+	.adminHome-body-obs2-s2-flexContianer-object-container
+		width 75%
+		height 75%
+		h2, p
+			line-height 1
+			color white
+		h2
+			margin-top 6px
+		input 
+			position absolute 
+			bottom 0px
+			width: 170px;
+			height: 40px;
+			background: white;
+			border: none;
+			outline: none;
+			font-size: 14px;
+			letter-spacing: 1px;
+			cursor: pointer;
+			font-weight: 200;

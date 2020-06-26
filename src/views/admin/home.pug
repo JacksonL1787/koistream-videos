@@ -10,8 +10,13 @@ head
 			window.user = JSON.parse(rawUser.replace(/&quot;/g,'"'));
 		}
 
+		var rawVideos = "#{videosRaw}"
+		if(rawUser) {
+			window.videos = JSON.parse(rawVideos.replace(/&quot;/g,'"'));
+		}
+
 body
-	
+
 	.adminHome-wrapper
 		.adminHome-nav
 			.adminHome-nav-wrapper.fullVertCenter
@@ -31,16 +36,13 @@ body
 		.adminHome-sNav
 			.adminHome-sNav-container.fullXCenter
 				.adminHome-sNav-objects
-					.adminHome-sNav-object#overview.active
+					.adminHome-sNav-object#overview.active(onclick="window.location.href='/admin/home'")
 						p.fullVertCenter Overview
 						.adminHome-sNav-object-bhov
-					.adminHome-sNav-object#overview
+					.adminHome-sNav-object#library(onclick="window.location.href='/admin/library'")
 						p.fullVertCenter Library
 						.adminHome-sNav-object-bhov
-					.adminHome-sNav-object#overview
-						p.fullVertCenter Statistics
-						.adminHome-sNav-object-bhov
-					.adminHome-sNav-object#overview
+					.adminHome-sNav-object#users(onclick="window.location.href='/admin/users'")
 						p.fullVertCenter Users
 						.adminHome-sNav-object-bhov
 				.adminHome-sNav-uploadVideo
@@ -55,17 +57,17 @@ body
 						.adminHome-body-obs1-left-s
 							.adminHome-body-obs1-left-s-container.fullCenter
 								.adminHome-body-obs1-left-s-container-tl#fillTLS1
-								h3 %
+								h3.videosNum %
 								.adminHome-body-obs1-left-s-c-bottom
-									p Videos
+									p Total Videos
 									.adminHome-body-obs1-left-s-c-bottom-selMarker
 										.adminHome-body-obs1-left-s-c-bottom-selMarker-fill#fillS1
 
 							.adminHome-body-obs1-left-s-vl.fullVertCenter
-						.adminHome-body-obs1-left-s
+						.adminHome-body-obs1-left-s#reloadTotalViews
 							.adminHome-body-obs1-left-s-container.fullCenter
 								.adminHome-body-obs1-left-s-container-tl#fillTLS2
-								h3 %
+								h3.totalViews %
 								.adminHome-body-obs1-left-s-c-bottom
 									p Total Views
 									.adminHome-body-obs1-left-s-c-bottom-selMarker
@@ -74,18 +76,33 @@ body
 						.adminHome-body-obs1-left-s
 							.adminHome-body-obs1-left-s-container.fullCenter
 								.adminHome-body-obs1-left-s-container-tl#fillTLS3
-								h3 %
+								h3.totalPUV %
 								.adminHome-body-obs1-left-s-c-bottom
-									p Pending Uploads
+									p Private/Unlisted Videos
 									.adminHome-body-obs1-left-s-c-bottom-selMarker
 										.adminHome-body-obs1-left-s-c-bottom-selMarker-fill#fillS3
 
 					.adminHome-body-obs1-right
+						.adminHome-body-obs1-right-top
+							.adminHome-body-obs1-right-top-container.fullCenter
+								.adminHome-body-obs1-right-top-container-left
+									.adminHome-body-obs1-right-top-container-left-txtData-wrapper.fullCenter
+										h3 200
+										p Change in Views
+								.adminHome-body-obs1-right-top-container-right
+									canvas(id="canvas")
+								
+						.adminHome-body-obs1-right-bottom(onclick="window.location.href='/admin/library'")
+							.adminHome-body-obs1-right-bottom-thr
+							p.fullCenter View Details
+
+
 				.adminHome-body-obs2
 					.adminHome-body-obs2-s1
 						h3.fullVertCenter All Videos
 					.adminHome-body-obs2-s2
-					
+						.adminHome-body-obs2-s2-flexContianer.fullXCenter
+							
 				
 
 

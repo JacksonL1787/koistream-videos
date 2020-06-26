@@ -19,18 +19,69 @@ body
 					h3 Video Studio
 					p Upload a video
 			.videoStudio-wrapper-modal-body
-				form(action="/admin/u/video" method="post" enctype="multipart/form-data")
-					input(type="file" name="videoUPL")
-					br
-					input(type="file" name="videoUPL")
-					br
-					input(type="text" placeholder="Title" name="title")
-					br
-					textarea(type="text" placeholder="Description" name="description")
-					br
-					input(type="text" id="dtpicker" name="streamDate" placeholder="Stream Date")
-					br
-					input.upVid(type="submit" value="Upload")
+				.videoStudio-wrapper-modal-body-dimer
+				form.videoStudio-wrapper-modal-body-container.fullXCenter(action="/admin/u/video" method="post" enctype="multipart/form-data")
+					.videoStudio-wrapper-modal-body-container-uploadWrap
+						.videoStudio-wrapper-modal-body-container-uploadWrap-videoUpload
+							.videoStudio-wrapper-modal-body-container-uploadWrap-videoUpload-ceOD.fullVertCenter
+								.videoStudio-wrapper-modal-body-container-uploadWrap-videoUpload-ceOD-icon.reg-image
+								p Upload Video - Drop files or click here...
+							input.fileUploadVide(type="file" name="videoUPL" style="display: none;")
+						.videoStudio-wrapper-modal-body-container-uploadWrap-thumbnailUpload
+							input.fullCenter(type="button" value="Upload Thumbnail")
+							input.uploadThumbbna(type="file" name="videoUPL" style="display: none;")
+					.videoStudio-wrapper-modal-body-container-optionsWrap
+						.videoStudio-wrapper-modal-body-container-optionsWrap-navbar
+							.videoStudio-wrapper-modal-body-container-optionsWrap-navbar-object.active#description
+								p.fullCenter.dnaj Description
+								.videoStudio-wrapper-modal-body-container-optionsWrap-navbar-object-lhr
+							.videoStudio-wrapper-modal-body-container-optionsWrap-navbar-object#options
+								p.fullCenter.dnaj Options
+								.videoStudio-wrapper-modal-body-container-optionsWrap-navbar-object-lhr
+							.videoStudio-wrapper-modal-body-container-optionsWrap-navbar-object#advanced
+								p.fullCenter.dnaj Advanced
+								.videoStudio-wrapper-modal-body-container-optionsWrap-navbar-object-lhr
+							.videoStudio-wrapper-modal-body-container-optionsWrap-navbar-lhr
+						.videoStudio-wrapper-modal-body-container-optionsWrap-body.active#MMD_description
+							.videoStudio-wrapper-modal-body-container-optionsWrap-body-wrapper.fullVertCenter
+								p.p_title Video Header
+								input.title(type="text" placeholder="Title" name="title")
+								p.p_desc Video Description
+								textarea.desc(type="text" placeholder="Description" name="description")
+						.videoStudio-wrapper-modal-body-container-optionsWrap-body#MMD_options
+							.videoStudio-wrapper-modal-body-container-optionsWrap-body-wrapper.fullVertCenter
+								p.p_privacy Privacy
+								select(name="visibility")
+									option Private
+									option Unlisted
+									option Public
+								p.p_category Category
+								select(name="category")
+									option None
+									option Full Episodes
+									option Highlights
+									option Student Videos
+								p.p_nbe Notify Users by Email
+								select(name="notify_by_email")
+									option None
+									option All Users
+									option Students
+									option Parents
+									option Faculty
+			
+							
+						.videoStudio-wrapper-modal-body-container-optionsWrap-body#MMD_advanced
+							.videoStudio-wrapper-modal-body-container-optionsWrap-body-wrapper.fullVertCenter
+								p.p_dos Stream Date
+								input.i_sii(type="text" id="dtpicker" name="streamDate" placeholder="Date Streamed")
+
+						h5.videoBottomSSA Your Video is currently Private
+	
+					.videoStudio-wrapper-modal-body-container-pubWrap
+						.videoStudio-wrapper-modal-body-container-pubWrap-center.fullVertCenter
+							input.upVid(type="submit" value="Upload")
+							p or
+							a(href="/admin/home") Cancel
 				.videoStudio-wrapper-modal-body-progressBar
 					.videoStudio-wrapper-modal-body-progressBar-fill
 
@@ -39,14 +90,44 @@ script.
 
 	$('.upVid').click(function(e){
 		e.preventDefault()
+		$(this).val("Uploading Now...")
 		uploadVideo();
 	})
 	$('#dtpicker').datetimepicker({
 		maxDateTime: true
 	});
 
+	$('.videoStudio-wrapper-modal-body-container-optionsWrap-navbar-object').click(function(){
+		var id = $(this).attr('id')
+		$('.videoStudio-wrapper-modal-body-container-optionsWrap-body').removeClass('active')
+		$(".videoStudio-wrapper-modal-body-container-optionsWrap-navbar-object").removeClass('active')
+		$('#MMD_' + id).addClass('active')
+		$('#' + id).addClass('active')
+	})
+
+	$('.videoStudio-wrapper-modal-body-container-uploadWrap-thumbnailUpload input[type="button"]').click(function(){
+		$('.videoStudio-wrapper-modal-body-container-uploadWrap-thumbnailUpload input[type="file"]').click()
+	})
+
+	$(".videoStudio-wrapper-modal-body-container-uploadWrap-videoUpload-ceOD").click(function(){
+		$('.fileUploadVide').click()
+	})
+
+	 $('.fileUploadVide ').on('change', function(){
+		var fileName = $(this).val().split('/').pop().split('\\').pop();
+		$(".videoStudio-wrapper-modal-body-container-uploadWrap-videoUpload-ceOD p").text("Uploaded Video - " + fileName)
+		console.log(fileName);
+	 });
+
+	 $('.uploadThumbbna').on('change', function(){
+		var fileName = $(this).val().split('/').pop().split('\\').pop();
+		$(".videoStudio-wrapper-modal-body-container-uploadWrap-thumbnailUpload input[type='button']").val(fileName)
+		console.log(fileName);
+	 });
+
 
 	function uploadVideo() {
+		$(".videoStudio-wrapper-modal-body-dimer").show()
 		var form = $('.videoStudio-wrapper-modal-body form')[0];
 		var data = new FormData(form);
 		data.append("directory", makeid(6))
@@ -78,10 +159,21 @@ script.
 			success: (data) => {
 				console.log(data)
 				$('.videoStudio-wrapper-modal-body-progressBar-fill').css("background-color", "limegreen")
-		
+				$('.upVid').val("Completed!")	
+				setTimeout(function(){
+					window.location.href="/admin/home"
+				}, 1000)
 			},
 			error: (e) => {
+				$('.upVid').val("Failed!")
 				$('.videoStudio-wrapper-modal-body-progressBar-fill').css("background-color", "red")
+				setTimeout(function(){
+					$(".videoStudio-wrapper-modal-body-dimer").hide()
+					$('.videoStudio-wrapper-modal-body-progressBar-fill').width( "0%")
+				}, 2000)
+				setTimeout(function(){
+					$('.upVid').val("Upload")
+				}, 3000)
 			}
 		});
 	}

@@ -22,6 +22,7 @@ const passportSetup = require('./config/passport-setup')
 var userRouter = require('./routes/user');
 var authRouter = require('./routes/auth/auth');
 var adminRouter = require('./routes/admin/admin')
+var apiRouter = require('./routes/api/api')
  
 mongoose.connect(`mongodb://localhost:27017/DesignTechHS`, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
   if(err) {
@@ -72,7 +73,7 @@ app.post('/admin/u/video', upload_video.array('videoUPL'), (req, res, next) => {
     res.sendStatus(393)
   } else {
     mongoose.connect(`mongodb://localhost:27017/DesignTechHS`, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
-      client.collection('videos').insertOne({"id": files[0].destination.slice(11), "title": req.body.title, "streamDate": Number(req.body.streamDateS), "uploadDate": Date.now(), "description": req.body.description, "views": 0, "uploadMeta": {"uploadUserGID": req.body.googleId}})
+      client.collection('videos').insertOne({"id": files[0].destination.slice(11), "title": req.body.title, "streamDate": Number(req.body.streamDateS), "uploadDate": Date.now(), "description": req.body.description, "visibility": req.body.visibility, "category": req.body.category, "notify_by_email": req.body.notify_by_email, "views": 0, "uploadMeta": {"uploadUserGID": req.body.googleId}})
     })
     console.log("[File Upload]  Uploaded content completed")
     res.json({"status": 200, "folder": videoUploadFolder, "meta_file": files})
@@ -104,6 +105,7 @@ app.use(passport.session());
 app.use('/', userRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter)
+app.use('/api', apiRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
