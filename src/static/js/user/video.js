@@ -9,6 +9,16 @@ const appendVideoData = () => {
             <source src="/videos/${video.id}/video.mp4" type="video/mp4" />
         </video>
     `)
+    videojs.options.hls.overrideNative = true;
+	// Player instance options
+	var options = {
+		html5: {
+			nativeAudioTracks: false,
+			nativeVideoTracks: false
+		}
+    };
+    
+	player = window.player = videojs('#video', options);
 }
 
 
